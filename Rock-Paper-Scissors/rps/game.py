@@ -98,14 +98,21 @@ class RPS:
         if name not in self.score_board:
             self.score_board[name] = 0
 
-        game_mode = input()
+        game_mode = input('''Type which options to include. Use commas! Options are:
+        rock,gun,lightning,devil,dragon,water,air,
+        paper,sponge,wolf,tree,human,snake,scissors,fire
+''')
         if game_mode == '':
             pass    # roshambo  is already preset  R P S  if left Blank
         else:
             game_mode = game_mode.split(sep=',')
             self.roshambo = game_mode
+        print(f'Okay, the computer will chose from: {self.roshambo}')
 
-        print('Okay, let\'s start')
+        print('!rating to check your score')
+        print('!exit to save your score and leave the game.')
+        print('!leader to check the leader board.')
+        print('Okay, let\'s start!!')
         while True:
 
             pc = choice(self.roshambo)
@@ -119,6 +126,9 @@ class RPS:
                 break
             elif user == '!rating':
                 print(self.score_board[name])
+            elif user == '!leader':
+                for key in self.score_board:
+                    print(key, ':', self.score_board[key])
             elif user not in self.roshambo:
                 print('Invalid input')
 
